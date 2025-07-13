@@ -62,13 +62,9 @@
   var button = class extends Block {
     text;
     textColor;
-    // ex: "#FFFFFF"
     backgroundColor;
-    // ex: "#6200EE"
     textSize;
-    // em sp
     padding;
-    // em dp (uniforme)
     paddingLeft;
     paddingRight;
     paddingTop;
@@ -78,7 +74,6 @@
     height;
     onPressed;
     functionId;
-    // Function ID for the onPressed action
     constructor(props) {
       super();
       this.text = props.text;
