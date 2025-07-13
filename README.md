@@ -55,6 +55,6 @@ const myDeclarativeApp = new DeclarativeUI({
 runApp(myDeclarativeApp);
 ```
 
-### Image
+### POC's image
 
-![Hello World Example](./assets/image.png)
+![Counter Example](./assets/counter.png)

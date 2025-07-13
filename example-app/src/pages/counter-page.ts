@@ -35,6 +35,7 @@ export class CounterPage extends Page {
           Container({
             padding: 16,
             backgroundColor: "#EDE7F6",
+            width: "match_parent",
             child: Column({
               children: [
                 SimpleText("Counter Page", {
