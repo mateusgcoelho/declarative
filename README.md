@@ -4,11 +4,7 @@
 
 This repository contains a declarative TypeScript Mobile framework for building user interfaces and managing state, designed to integrate with QuickJS and be used in Android applications.
 
-## Example: Creating an MVP Page with "Hello World"
-
-Below is an example of how to create a simple page using the declarative framework that displays "Hello World" on the screen.
-
-### Code Example
+### Code structure example
 
 ```typescript
 import {
