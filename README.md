@@ -4,34 +4,53 @@
 
 This repository contains a declarative TypeScript Mobile framework for building user interfaces and managing state, designed to integrate with QuickJS and be used in Android applications.
 
-## Project Structure
+## Example: Creating an MVP Page with "Hello World"
 
-The project is organized as follows:
+Below is an example of how to create a simple page using the declarative framework that displays "Hello World" on the screen.
 
-### Main Directories
+### Code Example
 
-- **`declarative/`**: Contains the declarative framework.
-  - **`src/core/presentation/state/`**: State management and signals.
-  - **`src/core/presentation/ui/`**: UI components like `button`, `text`, `row`, and more.
-  - **`src/core/presentation/router/`**: Routing and navigation management.
-- **`example-app/`**: Example Android application using the declarative framework.
-  - **`android/`**: Android project configuration and files.
-  - **`src/`**: Source code for the example application.
+```typescript
+import {
+  Block,
+  Column,
+  Container,
+  DeclarativeUI,
+  Page,
+  RouterManager,
+  runApp,
+  SimpleText,
+} from "@mtg/declarative";
 
-## Features
+class HelloWorldApp extends Page {
+  build(): Block {
+    return Container({
+      width: "match_parent",
+      height: "match_parent",
+      backgroundColor: "#F2F2F2",
+      child: Column({
+        children: [
+          SimpleText("Welcome to the Declarative UI example.", {
+            textColor: "#000000",
+            textSize: 24,
+          }),
+          SimpleText("Welcome to the Declarative UI example.", {
+            textColor: "#FF0000",
+            textSize: 18,
+          }),
+        ],
+      }),
+    });
+  }
+}
 
-### UI Components
+const myDeclarativeApp = new DeclarativeUI({
+  router: new RouterManager({
+    routes: {
+      "/": new HelloWorldApp(),
+    },
+  }),
+});
 
-UI components are located in `declarative/src/core/presentation/ui/` and include:
-
-- **`button.ts`**: Button component with support for events like `onPressed`.
-- **`text.ts`**: Component for displaying text.
-- **`row.ts`** and **`column.ts`**: Layouts for organizing components horizontally or vertically.
-- **`scaffold.ts`**: Basic structure for organizing the interface.
-- **`container.ts`** and **`expanded.ts`**: Components for layout control and expansion.
-
-### Navigation
-
-Routing and navigation are managed in `declarative/src/core/presentation/router/`:
-
-- **`manager.ts`**: Defines the default initial path with `DEFAULT_INITIAL_PATH`.
+runApp(myDeclarativeApp);
+```
