@@ -57,4 +57,4 @@ runApp(myDeclarativeApp);
 
 ### Image
 
-![Hello World Example](assets/image.png)
+![Hello World Example](./assets/image.png)
