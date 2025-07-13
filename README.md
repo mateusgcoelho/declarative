@@ -1,4 +1,4 @@
-# DeclarativeUI (Flutter in js? 😂)
+# DeclarativeUI (Flutter in js? 😂) In ALPHA version forever 😎
 
 > **Note:** This project was created purely for study and fun purposes and should not be taken seriously. 😊
 
