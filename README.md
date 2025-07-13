@@ -54,3 +54,7 @@ const myDeclarativeApp = new DeclarativeUI({
 
 runApp(myDeclarativeApp);
 ```
+
+### Image
+
+![Hello World Example](assets/image.png)
