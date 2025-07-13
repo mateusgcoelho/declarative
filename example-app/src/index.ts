@@ -89,56 +89,6 @@ class CounterPage extends Page {
   }
 }
 
-class ExamplePage extends Page {
-  build(): Block {
-    return Container({
-      padding: 32,
-      width: "match_parent",
-      height: "match_parent",
-      backgroundColor: "#F5F5F5",
-      child: Column({
-        children: [
-          Container({
-            padding: 16,
-            backgroundColor: "#EDE7F6",
-            child: Column({
-              children: [
-                SimpleText("Welcome to the Example Page", {
-                  textSize: 24,
-                  fontWeight: "bold",
-                  textColor: "#666666",
-                }),
-                SimpleText("This is a simple example of Declarative UI.", {
-                  textSize: 16,
-                  textColor: "#666666",
-                }),
-              ],
-            }),
-          }),
-          Container({
-            width: "match_parent",
-            marginTop: 32,
-            marginBottom: 24,
-            child: Row({
-              children: [
-                Expanded({
-                  child: Button({
-                    text: "Go to Example Page",
-                    textColor: "#FFFFFF",
-                    backgroundColor: "#6200EE",
-                    height: "wrap_content",
-                    width: "match_parent",
-                  }),
-                }),
-              ],
-            }),
-          }),
-        ],
-      }),
-    });
-  }
-}
-
 const app = new DeclarativeUI({
   router: new RouterManager({
     routes: {
