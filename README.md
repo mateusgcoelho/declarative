@@ -57,4 +57,4 @@ runApp(myDeclarativeApp);
 
 ### POC's image
 
-![Counter Example](./assets/counter.png)
+<img src="./assets/counter.png" alt="Counter Example" width="300">
