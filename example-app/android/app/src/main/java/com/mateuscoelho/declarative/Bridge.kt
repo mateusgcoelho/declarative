@@ -8,7 +8,6 @@ import com.shiqi.quickjs.JSValue
 import com.shiqi.quickjs.QuickJS
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.util.Optional
 
 class Bridge(context: Context) {
     private val quickJS: QuickJS = QuickJS.Builder().build()

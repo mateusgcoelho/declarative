@@ -5,27 +5,10 @@ type WidthHeight = number | "wrap_content" | "match_parent";
 
 type ButtonConfig = {
   text: string;
-  textColor?: string; // ex: "#FFFFFF"
-  backgroundColor?: string; // ex: "#6200EE"
-  textSize?: number; // em sp
-  padding?: number; // em dp (uniforme)
-  paddingLeft?: number;
-  paddingRight?: number;
-  paddingTop?: number;
-  paddingBottom?: number;
-  enabled?: boolean;
-  width?: WidthHeight;
-  height?: WidthHeight;
-  onPressed?: Function; // Action to perform on click
-};
-
-class button extends Block {
-  text: string;
-
-  textColor?: string; // ex: "#FFFFFF"
-  backgroundColor?: string; // ex: "#6200EE"
-  textSize?: number; // em sp
-  padding?: number; // em dp (uniforme)
+  textColor?: string;
+  backgroundColor?: string;
+  textSize?: number;
+  padding?: number;
   paddingLeft?: number;
   paddingRight?: number;
   paddingTop?: number;
@@ -34,7 +17,24 @@ class button extends Block {
   width?: WidthHeight;
   height?: WidthHeight;
   onPressed?: Function;
-  functionId?: string; // Function ID for the onPressed action
+};
+
+class button extends Block {
+  text: string;
+
+  textColor?: string;
+  backgroundColor?: string;
+  textSize?: number;
+  padding?: number;
+  paddingLeft?: number;
+  paddingRight?: number;
+  paddingTop?: number;
+  paddingBottom?: number;
+  enabled?: boolean;
+  width?: WidthHeight;
+  height?: WidthHeight;
+  onPressed?: Function;
+  functionId?: string;
 
   constructor(props: ButtonConfig) {
     super();

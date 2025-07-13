@@ -3,7 +3,6 @@ package com.mateuscoelho.declarative
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.text.Layout
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
@@ -16,7 +15,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.shiqi.quickjs.JSString
-import com.shiqi.quickjs.JSValue
 import org.json.JSONObject
 import java.lang.ref.WeakReference
 
@@ -61,8 +59,6 @@ class RenderManager(
     fun updateUI(newBlock: String) {
         val context = getContext()
         Log.i("DeclarativeUI", "Updating UI with new block: $newBlock")
-        Log.i("DeclarativeUI", "Current block: $actualBlock")
-        Log.i("DeclarativeUI", newBlock)
 
         val jsonObject = JSONObject(newBlock)
         val node = parseNode(jsonObject)
@@ -73,21 +69,18 @@ class RenderManager(
             container.invalidate()
             container.requestLayout()
 
-            // Se ainda não funcionar, tente também:
-            // container.post {
-            //     container.invalidate()
-            //     container.requestLayout()
-            // }
             if (container is ViewGroup) {
                 container.removeAllViews()
                 container.addView(view)
-            } else {
-                Log.e("DeclarativeUI", "Root container is not a ViewGroup")
-                Toast.makeText(context, "Erro ao atualizar UI: Container inválido", Toast.LENGTH_SHORT).show()
+                
+                actualBlock = newBlock
+                Log.i("DeclarativeUI", "UI updated successfully")
+                return
             }
+
+            Log.e("DeclarativeUI", "Root container is not a ViewGroup")
+            Toast.makeText(context, "Erro ao atualizar UI: Container inválido", Toast.LENGTH_SHORT).show()
         }
-        actualBlock = newBlock
-        Log.i("DeclarativeUI", "UI updated successfully")
     }
 
     fun parseNode(json: JSONObject): DeclarativeNode {
@@ -151,16 +144,16 @@ class RenderManager(
             "button" -> {
                 DeclarativeNode.Button(
                     text = json.optString("text", ""),
-                    textColor = json.optString("textColor", null),
-                    backgroundColor = json.optString("backgroundColor", null),
+                    textColor = json.optStringOrNull("textColor"),
+                    backgroundColor = json.optStringOrNull("backgroundColor"),
                     textSize = json.optDouble("textSize", Double.NaN).let { if (it.isNaN()) null else it.toFloat() },
-                    padding = json.optInt("padding", -1).let { if (it == -1) null else it },
-                    paddingLeft = json.optInt("paddingLeft", -1).let { if (it == -1) null else it },
-                    paddingRight = json.optInt("paddingRight", -1).let { if (it == -1) null else it },
-                    paddingTop = json.optInt("paddingTop", -1).let { if (it == -1) null else it },
-                    paddingBottom = json.optInt("paddingBottom", -1).let { if (it == -1) null else it },
+                    padding = json.optIntOrNull("padding"),
+                    paddingLeft = json.optIntOrNull("paddingLeft"),
+                    paddingRight = json.optIntOrNull("paddingRight"),
+                    paddingTop = json.optIntOrNull("paddingTop"),
+                    paddingBottom = json.optIntOrNull("paddingBottom"),
                     enabled = json.optBoolean("enabled", true),
-                    functionId = json.optString("functionId", null)
+                    functionId = json.optStringOrNull("functionId")
                 )
             }
             "expanded" -> {
@@ -310,7 +303,6 @@ class RenderManager(
                         setTextSize(TypedValue.COMPLEX_UNIT_SP, it)
                     }
 
-                    // Padding: prioriza padding geral, senão usa os individuais
                     val paddingLeft = node.paddingLeft ?: node.padding ?: 0
                     val paddingRight = node.paddingRight ?: node.padding ?: 0
                     val paddingTop = node.paddingTop ?: node.padding ?: 0
@@ -333,9 +325,9 @@ class RenderManager(
             is DeclarativeNode.Expanded -> {
                 val childView = renderNode(node.child, true)
                 val layoutParams = LinearLayout.LayoutParams(
-                    0, // width 0 to use weight
-                    ViewGroup.LayoutParams.WRAP_CONTENT, // height wrap_content
-                    1f // weight = 1 to expand
+                    0,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    1f
                 )
 
                 childView.layoutParams = layoutParams
