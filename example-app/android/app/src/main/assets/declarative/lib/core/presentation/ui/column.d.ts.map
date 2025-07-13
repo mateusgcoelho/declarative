@@ -1,0 +1,1 @@
+{"version":3,"file":"column.d.ts","sourceRoot":"","sources":["../../../../../src/core/presentation/ui/column.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,YAAY,CAAC;AAEnC,qBAAa,MAAO,SAAQ,KAAK;IAC/B,QAAQ,EAAE,KAAK,EAAE,CAAM;IAEvB;;;;;;;;;SASK;gBACO,KAAK,GAAE;QAAE,QAAQ,EAAE,KAAK,EAAE,CAAA;KAAqB;IAK3D,IAAI,IAAI,MAAM,CAAC,MAAM,EAAE,GAAG,CAAC;CAQ5B"}

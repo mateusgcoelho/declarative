@@ -1,0 +1,1 @@
+{"version":3,"file":"expanded.d.ts","sourceRoot":"","sources":["../../../../../src/core/presentation/ui/expanded.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,YAAY,CAAC;AAEnC,qBAAa,QAAS,SAAQ,KAAK;IACjC,KAAK,EAAE,KAAK,CAAC;gBAED,KAAK,EAAE;QAAE,KAAK,EAAE,KAAK,CAAA;KAAE;IAKnC,IAAI,IAAI,MAAM,CAAC,MAAM,EAAE,GAAG,CAAC;CAM5B"}
